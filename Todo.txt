@@ -1,0 +1,8 @@
+Sort scores in table 
+check for existing score with those initials 
+timers 
+color change when hover over button, outline when click on it 
+round the buttons a bit? 
+color change if wrong answer / right answer? 
+sound when wrong 
+keep accurate score 

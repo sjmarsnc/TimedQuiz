@@ -1,0 +1,37 @@
+#topRow {
+    color: #522f70; 
+    font-weight: bold;
+} 
+
+#welcome-screen, #finished, #high-scores {
+    max-width: 980px; 
+}
+
+#quiz-area {
+    max-width: 560px; 
+}
+
+button {
+    background-color: #522f70 !important; 
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+button:hover {
+    background-color: #624f90; 
+}
+
+.hide {
+    display: none !important; 
+}
+
+#rightOrWrong {
+    font-style: italic; 
+    font-size: 1.5rem; 
+}
+
+#score-table {
+    max-width: 580px;  
+    background-color: lavender; 
+    font-weight: bold; 
+}
