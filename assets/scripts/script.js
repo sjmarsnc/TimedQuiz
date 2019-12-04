@@ -6,7 +6,7 @@ var highScoresArea = document.querySelector("#high-scores-area");
 var scoreTableEl = document.querySelector("#score-table"); 
 var timeLeftEl = document.querySelector("#timeLeft"); 
 
-var quizTime = 75;   // 75 seconds to take quiz , lose 10 seconds for a wrong answer 
+var quizTime = 25;   // 75 seconds to take quiz , lose 10 seconds for a wrong answer 
 var questionEl = document.getElementById("question"); 
 var answersEl = document.getElementById("answers"); 
 var rowEl = document.getElementById("rightOrWrong");  
@@ -22,6 +22,7 @@ var highScores = [];  // saved high scores
 var currentQuestion = 0;  // the currently displayed question 
 var timeLeft = 0; 
 var quizScore = 0;  
+var timerInterval; 
 
 
 function displayQuestion(index) {
@@ -40,13 +41,31 @@ function displayQuestion(index) {
 }
 
 function startQuiz() {
-    timeLeft = 75; 
+    timeLeft = quizTime;   
     quizScore = 0;  
-    timeLeftEl.value = timeLeft; 
+    timeLeftEl.textContent = timeLeft; 
     welcomeArea.classList.add("hide"); 
     quizArea.classList.remove("hide"); 
     currentQuestion = 0;   
     displayQuestion(0); 
+    startTimer(); 
+}
+
+function startTimer() {
+     timerInterval = setInterval(updateTimerDisplay,1000);
+}
+        
+function updateTimerDisplay() {
+    timeLeft = timeLeftEl.textContent; 
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval); 
+        // indicate that they ran out of time 
+        quizDone(); 
+    }
+    else {
+        timeLeft --;  
+        timeLeftEl.textContent = timeLeft; 
+    }
 }
 
 function answer(row) {     
@@ -60,7 +79,12 @@ function answer(row) {
         rowEl.textContent = "Incorrect!"; 
         rowEl.style = "color: red; font-style: italic; font-size: 1.5rem;"; 
         // make a sound
-        timeLeftEl = timeLeft - 10;  
+        updateTimeLeft = timeLeftEl.textContent; 
+        updateTimeLeft -= 10;  
+        if (updateTimeLeft < 0 ) {
+            updateTimeLeft = 0; 
+        }
+        timeLeftEl.textContent = updateTimeLeft; 
     }
     //display for only two seconds or otherwise show error more clearly
     //change color on button   
@@ -87,7 +111,8 @@ function checkAnswer(event) {
 function quizDone() {
     quizArea.classList.add("hide"); 
     finishedArea.classList.remove("hide"); 
-    //stop timer
+    timeLeft = 0 ;  
+    timeLeftEl.textContent = timeLeft; 
     quizScore = quizScore + timeLeft;  // need to keep score 
     finalScoreEl.textContent = quizScore; 
     console.log("quizDone called");  
