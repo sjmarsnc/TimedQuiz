@@ -113,7 +113,7 @@ function saveScore() {
     // sort so highest first 
     quizScoresAsString = JSON.stringify(quizScores); 
     localStorage.setItem("quizScores",quizScoresAsString); 
-    
+    initialsEl.value = "";  
     finishedArea.classList.add("hide"); 
     displayHighScores();   
 }

@@ -6,3 +6,4 @@ round the buttons a bit?
 color change if wrong answer / right answer? 
 sound when wrong 
 keep accurate score 
+clear initials after storing them 
