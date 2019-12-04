@@ -16,11 +16,14 @@
 <body>
     <div id="top-navigation" class="container m-5" width="100%">
         <div class="row justify-content-between w-100" id="topRow">
-            <div class="col col-4">
+            <div class="col col-md-4 col-sm-12">
                 <!-- what element to use here?  -->
                 <span onclick="displayHighScores();">View Highscores</span>
             </div>
-            <div class="col col-4 justify-self-right">
+            <div class="col col-md-4 col-sm-12">
+                &nbsp;
+            </div>
+            <div class="col col-md-4 col-sm-12 justify-self-right">
                 <div>Time : <span id="timeLeft">0</span></div>
             </div>
         </div>
@@ -47,14 +50,15 @@
 
     <div id="finished-area" class="hide container ">
         <h2 class= "row justify-content-center"> All Done!</h2>
-        <div class="row justify-content-center">Your final score is <span id="finalscore"></span>.</div> 
+        <div class="row justify-content-center">Your final score is &nbsp; <span id="finalscore"></span>.</div> 
         <form class="row justify-content-center">
             Enter initials:&nbsp;&nbsp;&nbsp; <input id="initials">&nbsp;&nbsp;&nbsp;
             <button id = "saveScore" type="submit">Save Score</button>
         </form>
     </div>
 
-    <div id="high-scores-area" class="hide container justify-content-center"> 
+    <div id="high-scores-area" class="hide container justify-content-center">
+        <span id="no-saved-scores" class="justify-content-center"></span> 
         <ol id="score-table" class="justify-content-left">
         </ol>
         <div class="row justify-content-center m-4">

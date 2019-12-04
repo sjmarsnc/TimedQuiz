@@ -6,4 +6,5 @@ round the buttons a bit?
 color change if wrong answer / right answer? 
 sound when wrong 
 keep accurate score 
-clear initials after storing them 
+clear initials after storing them?
+when clear high scores must clear the content of the table 
