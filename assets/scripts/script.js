@@ -17,6 +17,7 @@ var noSavedScoresEl = document.getElementById("no-saved-scores");
 var saveScoreButton = document.getElementById("saveScore"); 
 var clearScoresButton = document.getElementById("clearScores"); 
 var initialsEl = document.getElementById("initials"); 
+var beepEl = document.getElementById("beep"); 
 
 var highScores = [];  // saved high scores   
 var currentQuestion = 0;  // the currently displayed question 
@@ -78,7 +79,8 @@ function answer(row) {
     else {
         rowEl.textContent = "Incorrect!"; 
         rowEl.style = "color: red; font-style: italic; font-size: 1.5rem;"; 
-        // make a sound
+        console.log("Beep element: " + beepEl);
+        beepEl.play(); 
         updateTimeLeft = timeLeftEl.textContent; 
         updateTimeLeft -= 10;  
         if (updateTimeLeft < 0 ) {
@@ -88,12 +90,12 @@ function answer(row) {
     }
     var showMsgTimer = setTimeout( function () { 
         rowEl.textContent = "";
-        }, 1500); 
+        }, 1500);  
     
-    //display for only two seconds or otherwise show error more clearly
-    //change color on button   
-    
+     
 }
+
+
 
 function checkAnswer(event) {
     event.preventDefault(); 
