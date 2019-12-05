@@ -6,7 +6,7 @@ var highScoresArea = document.querySelector("#high-scores-area");
 var scoreTableEl = document.querySelector("#score-table"); 
 var timeLeftEl = document.querySelector("#timeLeft"); 
 
-var quizTime = 25;   // 75 seconds to take quiz , lose 10 seconds for a wrong answer 
+var quizTime = 75;   // 75 seconds to take quiz , lose 10 seconds for a wrong answer 
 var questionEl = document.getElementById("question"); 
 var answersEl = document.getElementById("answers"); 
 var rowEl = document.getElementById("rightOrWrong");  
@@ -32,7 +32,7 @@ function displayQuestion(index) {
     
     for (var i=0; i < questions[index].choices.length; i++) {
         var answerButton = document.createElement("button"); 
-        answerButton.setAttribute("class","btn mt-2 text-left");
+        answerButton.setAttribute("class","btn m-2 text-left");
         answerButton.setAttribute("data-id",questions[index].choices[i]);
         var questionNum = i + 1; 
         answerButton.textContent = questionNum + ". " + questions[index].choices[i]; 
@@ -117,7 +117,8 @@ function quizDone() {
     finishedArea.classList.remove("hide"); 
     clearInterval(timerInterval); 
     timeLeftEl.textContent = timeLeft; 
-    quizScore = quizScore + timeLeft;  // need to keep score 
+    console.log("time left: " + timeLeft + "  quizScore: " + quizScore); 
+    quizScore = parseInt(quizScore) + parseInt(timeLeft);  // need to keep score 
     timeLeft = 0 ;  
     finalScoreEl.textContent = quizScore; 
     console.log("quizDone called");  
@@ -158,7 +159,7 @@ function saveScore() {
         
         // insert line where it goes according to highest score and 
         // remove any ones with the same initials and lower scores 
-        // list should be in order by score 
+        // list will be in descending order by score 
         console.log("At beginning: " + highScores); 
         console.log("Incoming: " + initials + " " + quizScore);
         for (var i=0; i < highScores.length; i++) {
@@ -175,12 +176,14 @@ function saveScore() {
                 highScores.splice(i,1); 
                 console.log('Removed old one for initials ' + matchedInitials); 
             }
+            else if (highScores[i].initials === initials && 
+                     highScores[i].score > quizScore) {
+                break; // already one for this user with a higher score 
+            }
             else if (i === (highScores.length-1) && notAdded) {
                 highScores.push(newScore);  
                 notAdded = false; 
             }
-            
-            
         }
     } 
     else {

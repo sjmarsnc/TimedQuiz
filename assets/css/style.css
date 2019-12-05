@@ -15,10 +15,15 @@ button {
     background-color: #522f70 !important; 
     color: white !important;
     font-family: Arial, Helvetica, sans-serif; 
+    border-radius: 8px !important;  
 }
 
 button:hover {
-    background-color: #624f90; 
+    background-color: #695d85 !important; 
+}
+
+button:active {
+    border: #ffffff; 
 }
 
 .hide {
