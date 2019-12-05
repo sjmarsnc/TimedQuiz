@@ -86,6 +86,10 @@ function answer(row) {
         }
         timeLeftEl.textContent = updateTimeLeft; 
     }
+    var showMsgTimer = setTimeout( function () { 
+        rowEl.textContent = "";
+        }, 1500); 
+    
     //display for only two seconds or otherwise show error more clearly
     //change color on button   
     
@@ -111,9 +115,10 @@ function checkAnswer(event) {
 function quizDone() {
     quizArea.classList.add("hide"); 
     finishedArea.classList.remove("hide"); 
-    timeLeft = 0 ;  
+    clearInterval(timerInterval); 
     timeLeftEl.textContent = timeLeft; 
     quizScore = quizScore + timeLeft;  // need to keep score 
+    timeLeft = 0 ;  
     finalScoreEl.textContent = quizScore; 
     console.log("quizDone called");  
 }
@@ -141,7 +146,7 @@ function getSavedScores() {
 
 function saveScore() {
     event.preventDefault(); 
-    var initials = initialsEl.value;
+    var initials = initialsEl.value.trim();
     initials = initials.toUpperCase(); 
     console.log("initials after uppercase: " + initials) ; 
     getSavedScores(); 
@@ -220,9 +225,11 @@ function displayHighScores() {
 
 function goToBeginning() {
     console.log("goToBeginning function called"); 
+    timeLeftEl.textContent = "0";  
     highScoresArea.classList.add("hide"); 
     welcomeArea.classList.remove("hide"); 
-    // set time to 0 
+
+  
 }
 
 backButton.addEventListener("click", goToBeginning); 
