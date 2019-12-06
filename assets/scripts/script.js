@@ -3,6 +3,7 @@ var welcomeArea = document.querySelector("#welcome-area");
 var quizArea = document.querySelector("#quiz-area"); 
 var finishedArea = document.querySelector("#finished-area"); 
 var highScoresArea = document.querySelector("#high-scores-area"); 
+var rowAreaEl = document.querySelector("#row-area");  
 var scoreTableEl = document.querySelector("#score-table"); 
 var timeLeftEl = document.querySelector("#timeLeft"); 
 
@@ -69,7 +70,8 @@ function updateTimerDisplay() {
     }
 }
 
-function answer(row) {     
+function answer(row) { 
+    rowAreaEl.classList.remove("hide");     
     if (row) {
         rowEl.textContent = "Correct!"; 
         rowEl.style = "color: green; font-style: italic; font-size: 1.5rem;";
@@ -90,6 +92,7 @@ function answer(row) {
     }
     var showMsgTimer = setTimeout( function () { 
         rowEl.textContent = "";
+        rowAreaEl.classList.add("hide");  
         }, 1500);  
     
      

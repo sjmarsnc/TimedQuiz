@@ -7,7 +7,7 @@
     max-width: 980px; 
 }
 
-#quiz-area {
+#quiz-area, #row-area {
     max-width: 560px; 
 }
 
