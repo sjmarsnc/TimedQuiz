@@ -7,9 +7,10 @@ Spacing in top row -  why does it stack too early?
 * round the buttons a bit? 
 x color change if wrong answer / right answer?  decided not to because you have 
     the correct/incorrect text with timeout - more interesting coding 
-sound when wrong 
+* sound when wrong 
 * keep accurate score (add for correct values)  
 * not getting the right score when timeout  
 ? clear initials after storing them?  or assume that the same person is trying
    again? 
 * when clear high scores must clear the content of the table displayed
+* align the timer on the right, fix how/when it stacks 
