@@ -14,5 +14,5 @@ The page is implemented by creating each section as a div and hiding or displayi
 
 Questions are stored in a separate questions.js file, making it easy to set up different sets of questions on different topics.  
 
-License for the sound? 
+The sound comes from Google sounds - license here:  https://creativecommons.org/licenses/by/4.0/ 
 
